@@ -1,0 +1,9 @@
+{
+  "name": "dsh-pet-fish-day",
+  "description": "按一天的日程推演：复用 dsh-pet 现有动画，按时段播放不同的动作、气泡与位置。",
+  "install": {
+    "cli": "dsh plugin --profile web add \"github:PC2005-cloud/petE#path:/fish-day\"",
+    "gui": "github:PC2005-cloud/petE#path:/fish-day"
+  },
+  "images": []
+}
