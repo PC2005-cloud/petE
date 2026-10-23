@@ -36,6 +36,16 @@ dsh plugin --profile web add "github:PC2005-cloud/petE#path:/baifan"
 
 图形化页面粘贴：`github:PC2005-cloud/petE#path:/baifan`
 
+### dsh-pet-fish-day
+
+按一天的日程推演：复用 dsh-pet 现有动画，按时段播放不同的动作、气泡与位置。
+
+```powershell
+dsh plugin --profile web add "github:PC2005-cloud/petE#path:/fish-day"
+```
+
+图形化页面粘贴：`github:PC2005-cloud/petE#path:/fish-day`
+
 <!-- plugins:end -->
 
 ## 安装一个扩展
