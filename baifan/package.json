@@ -1,0 +1,44 @@
+{
+  "name": "dsh-pet-baifan",
+  "version": "0.1.0",
+  "private": true,
+  "description": "吃白饭 —— dsh-pet 的第三方扩展：右键一点，宠物跑到屏幕底部等着，米饭从天上掉下来，然后追着吃到饱。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets/webm",
+    "assets/pic",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "_comment": [
+    "=============== dsh-pet-baifan 包清单说明 ===============",
+    "【它是什么】dsh-pet（桌宠插件）的第三方扩展，不自己养宠物，只借「占用锁」指挥已有的那只。",
+    "【没有构建】lib/index.js 与 lib/client.js 都是手写 JS：宿主半侧是普通 Cordis 插件，",
+    "  浏览器半侧是经典脚本（IIFE + window.__ModuleLoader__.load），不跑 tsdown / tsc。",
+    "【main】宿主半侧：把本包 assets/ 挂成 /dsh-pet-baifan/assets 前缀路由。",
+    "  为什么必须有它：POST /anim 的 url 形态只放行 http/https 完整地址，素材得有个同源地址可点播。",
+    "【exports['./client']】浏览器半侧：DSH 模块系统按它提供 /plugins/dsh-pet-baifan/client.js。",
+    "【dsh.bundle.patch】声明本包是组合包，patch 文件是 cordis.patch.yml（装进 profile 后自动进层栈）。",
+    "【dsh.client.inject】空 —— 本包不 import 任何平台模块；运行时用到的服务靠 ctx.get() 现场探测。",
+    "【files】发布只带 lib / assets / patch / README —— 没有 src、没有构建产物、没有测试。",
+    "【private】自用，不发布。",
+    "================================================"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "license": "MIT"
+}

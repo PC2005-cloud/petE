@@ -1,0 +1,12 @@
+{
+  "name": "dsh-pet-baifan",
+  "description": "右键桌宠，跑到屏幕底部，追着吃白饭。",
+  "install": {
+    "cli": "dsh plugin --profile web add \"github:PC2005-cloud/petE#path:/baifan\"",
+    "gui": "github:PC2005-cloud/petE#path:/baifan"
+  },
+  "images": [
+    "assets/preview/cover.png",
+    "assets/preview/running.png"
+  ]
+}
