@@ -22,7 +22,19 @@
 
 <!-- plugins:start -->
 
-还没有收录任何扩展，欢迎提交第一个。
+### dsh-pet-baifan
+
+右键桌宠，跑到屏幕底部，追着吃白饭。
+
+![dsh-pet-baifan 1](baifan/assets/preview/cover.png)
+
+![dsh-pet-baifan 2](baifan/assets/preview/running.png)
+
+```powershell
+dsh plugin --profile web add "github:PC2005-cloud/petE#path:/baifan"
+```
+
+图形化页面粘贴：`github:PC2005-cloud/petE#path:/baifan`
 
 <!-- plugins:end -->
 
