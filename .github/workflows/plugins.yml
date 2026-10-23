@@ -1,0 +1,58 @@
+name: 收录流水线
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plugins-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: 校验扩展
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 检查 PR 改动范围
+        if: github.event_name == 'pull_request'
+        env:
+          SCOPE_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node scripts/check-scope.mjs
+      - name: 按 CONTRIBUTING.md 校验扩展
+        run: node scripts/validate.mjs
+
+  render:
+    name: 更新收录列表
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 重新生成 README 列表
+        run: node scripts/render-readme.mjs
+      - name: 提交变更
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README 无变化"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: 更新扩展列表"
+          git push
