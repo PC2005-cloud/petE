@@ -1,0 +1,7 @@
+# 统一换行：仓库里一律 LF，避免 Windows 检出时整篇 CRLF
+* text=auto eol=lf
+
+# 二进制素材
+*.webm binary
+*.png binary
+*.mp4 binary

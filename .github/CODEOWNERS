@@ -1,0 +1,7 @@
+# 仓库级文件由维护者把关。
+# 插件目录不在此列：它们的内容由 PR 校验 + 人工 review 共同保障。
+
+/.github/        @PC2005-cloud
+/scripts/        @PC2005-cloud
+/README.md       @PC2005-cloud
+/CONTRIBUTING.md @PC2005-cloud
